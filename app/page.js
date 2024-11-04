@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import ExpenseList from '../components/ExpenseList';
 import ExpenseDetails from '../components/ExpenseDetails';
-
+import AddExpenseForm from '../components/AddExpenseForm';
 
 export default function Home() {
     const [expenses, setExpenses] = useState([]);
@@ -56,15 +56,25 @@ export default function Home() {
         setSelectedExpense(null);
     };
 
+    const handleAddExpense = (newExpense) => {
+        setExpenses((prevExpenses) => {
+            const updatedExpenses = [...prevExpenses, newExpense];
+            updateLocalStorage(updatedExpenses);
+            return updatedExpenses;
+        });
+    };
+
     const filteredExpenses = expenses.filter((expense) => {
         const matchesCategory = filter ? expense.category === filter : true;
         const matchesDate = dateFilter ? expense.date === dateFilter : true;
         return matchesCategory && matchesDate;
     });
-    return (
 
+    return (
         <div>
             <h1>Śledzenie Wydatków</h1>
+
+            <AddExpenseForm onAdd={handleAddExpense} />
 
             <select onChange={(e) => setFilter(e.target.value)} value={filter}>
                 <option value="">Wszystkie kategorie</option>
@@ -77,11 +87,13 @@ export default function Home() {
                 onChange={(e) => setDateFilter(e.target.value)}
                 value={dateFilter}
             />
+
             <ExpenseList
                 expenses={filteredExpenses}
                 onDelete={handleDelete}
                 onShowDetails={handleShowDetails}
             />
+
             {selectedExpense && (
                 <ExpenseDetails
                     expense={selectedExpense}
@@ -92,3 +104,4 @@ export default function Home() {
         </div>
     );
 }
+
