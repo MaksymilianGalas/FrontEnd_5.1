@@ -22,5 +22,77 @@
     "category": "Rozrywka",
     "date": "2024-03-25",
     "description": "Bilet na koncert ulubionego zespołu."
+  },
+  {
+    "id": 4,
+    "title": "BMW",
+    "amount": 20000,
+    "category": "Rozrywka",
+    "date": "2022-09-20",
+    "description": "BMW e87 120d 163hp -> 250hp."
+  },
+  {
+    "id": 5,
+    "title": "Drukarka 3d",
+    "amount": 830,
+    "category": "Nauka",
+    "date": "2024-11-08",
+    "description": "Durkarka Creality Ender 3v3 se"
+  },
+  {
+    "id": 6,
+    "title": "Rura kanalizacyjna PCV 200/4,9mm/1 m",
+    "amount": 42,
+    "category": "Praca",
+    "date": "2020-06-22",
+    "description": "Rury o gładkich powierzchniach wewnętrznych i zewnętrznych, których ścianki zewnętrzne i wewnętrzne połączone są wewnętrzną pośrednią termoplastyczną warstwą spienioną. Rury do kanalizacji zewnętrznej mają barwę pomarańczowo-brązową (RAL 8023), jednolitą pod względem odcieni i intensywności.\nWszystkie rodzaje rur i kształtek kanalizacyjnych łączone są pomiędzy sobą oraz z rurami gładkościennymi poprzez kielichy z rowkiem, w którym umieszczona jest pierścieniowa uszczelka z elastomeru."
+  },
+  {
+    "id": 7,
+    "title": "RURA KARBOWANA PESZEL IPCN32F D32 750N CZARNA z pilotem SCAME IPCN 32F",
+    "amount": 173,
+    "category": "Praca",
+    "date": "2023-02-08",
+    "description": "RURA KARBOWANA PESZEL IPCN32F D32 750N CZARNA z pilotem SCAME IPCN 32F"
+  },
+  {
+    "id": 8,
+    "title": "Paleta Rockstar Energy Blueberry Pomegranate acai",
+    "amount": 3000,
+    "category": "Jedzenie",
+    "date": "2023-07-11",
+    "description": "najlepszy energetyk na swiecie :D"
+  },
+  {
+    "id": 9,
+    "title": "Silnik M57N2TU2 BMW poj 2993cm3 208hp",
+    "amount": 4523,
+    "category": "Rozrywka",
+    "date": "2023-04-17",
+    "description": "Silnik na swap do bmw 120d"
+  },
+  {
+    "id": 10,
+    "title": "Zawias tył BMW e93 3.0d",
+    "amount": 2136,
+    "category": "Rozrywka",
+    "date": "2024-02-12",
+    "description": "Zeby nie ukrecilo zawiasu z nowym silnikiem"
+  },
+  {
+    "id": 11,
+    "title": "Skrzynia biegow 6hp28",
+    "amount": 800,
+    "category": "Rozrywka",
+    "date": "2023-03-27",
+    "description": "Automat do swapa"
+  },
+  {
+    "id": 12,
+    "title": "Wiązka elek. silnika M57N2TU2",
+    "amount": 500,
+    "category": "Rozrywka",
+    "date": "2023-07-11",
+    "description": "Nowa wiązka do swap"
   }
 ]
