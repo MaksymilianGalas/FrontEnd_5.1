@@ -65,11 +65,10 @@ export const GlobalProvider = ({ children }) => {
     };
 
     const filteredExpenses = expenses.filter((expense) => {
-        const matchesCategory = filter ? expense.category.toLowerCase() === filter.toLowerCase() : true;
-        const matchesDate = dateFilter ? new Date(expense.date).toISOString().split('T')[0] === dateFilter : true;
+        const matchesCategory = filter ? expense.category === filter : true;
+        const matchesDate = dateFilter ? expense.date === dateFilter : true;
         return matchesCategory && matchesDate;
     });
-
 
     return (
         <GlobalContext.Provider

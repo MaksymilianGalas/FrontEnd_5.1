@@ -1,35 +1,37 @@
+
 import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useNotificationContext } from "../context/NotificationContext";
+import { useMemo } from 'react';
 
-const ExpenseList = () => {
-    const { expenses, deleteExpense, showExpenseDetails, budget } = useGlobalContext();
+const ExpenseList = React.memo(() => {
+    const {expenses, deleteExpense, showExpenseDetails, budget} = useGlobalContext();
     const listEndRef = useRef(null);
-    const { addNotification } = useNotificationContext();
+    const {addNotification} = useNotificationContext();
 
     const [notifiedLargeExpenses, setNotifiedLargeExpenses] = useState(new Set());
-    const [isBudgetExceeded] = useState(false);
 
     useLayoutEffect(() => {
-        listEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        listEndRef.current?.scrollIntoView({behavior: "smooth"});
     }, [expenses]);
+    const totalExpenses = useMemo(() =>
+            expenses.reduce((sum, expense) => sum + expense.amount, 0)
+        , [expenses]);
 
     useEffect(() => {
-
-
         expenses.forEach((expense) => {
             if (expense.amount > 1000 && !notifiedLargeExpenses.has(expense.id)) {
                 addNotification(`Duży wydatek: ${expense.title} - ${expense.amount} zł`, 'warning');
                 setNotifiedLargeExpenses((prevSet) => new Set(prevSet).add(expense.id));
             }
         });
-    }, [expenses, budget, addNotification, isBudgetExceeded, notifiedLargeExpenses]);
+    }, [expenses, notifiedLargeExpenses, addNotification]);
 
     return (
-        <div style={{ padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "8px" }}>
-            <h2>Lista Wydatków</h2>
+        <div style={{padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "8px"}}>
+            <h2>Total Expenses: ${totalExpenses}</h2>
             {expenses.length === 0 ? (
-                <p style={{ color: "#999" }}>Brak wydatków do wyświetlenia.</p>
+                <p style={{color: "#999"}}>Brak wydatków do wyświetlenia.</p>
             ) : (
                 expenses.map((expense) => (
                     <div
@@ -42,27 +44,27 @@ const ExpenseList = () => {
                             backgroundColor: "#fff",
                         }}
                     >
-                        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                        <table style={{width: "100%", borderCollapse: "collapse"}}>
                             <tbody>
                             <tr>
-                                <td style={{ fontWeight: "bold", padding: "5px" }}>Tytuł:</td>
-                                <td style={{ padding: "5px" }}>{expense.title}</td>
+                                <td style={{fontWeight: "bold", padding: "5px"}}>Tytuł:</td>
+                                <td style={{padding: "5px"}}>{expense.title}</td>
                             </tr>
                             <tr>
-                                <td style={{ fontWeight: "bold", padding: "5px" }}>Kwota:</td>
-                                <td style={{ padding: "5px" }}>{expense.amount} zł</td>
+                                <td style={{fontWeight: "bold", padding: "5px"}}>Kwota:</td>
+                                <td style={{padding: "5px"}}>{expense.amount} zł</td>
                             </tr>
                             <tr>
-                                <td style={{ fontWeight: "bold", padding: "5px" }}>Kategoria:</td>
-                                <td style={{ padding: "5px" }}>{expense.category}</td>
+                                <td style={{fontWeight: "bold", padding: "5px"}}>Kategoria:</td>
+                                <td style={{padding: "5px"}}>{expense.category}</td>
                             </tr>
                             <tr>
-                                <td style={{ fontWeight: "bold", padding: "5px" }}>Data:</td>
-                                <td style={{ padding: "5px" }}>{expense.date}</td>
+                                <td style={{fontWeight: "bold", padding: "5px"}}>Data:</td>
+                                <td style={{padding: "5px"}}>{expense.date}</td>
                             </tr>
                             </tbody>
                         </table>
-                        <div style={{ marginTop: "10px" }}>
+                        <div style={{marginTop: "10px"}}>
                             <button
                                 onClick={() => showExpenseDetails(expense)}
                                 style={{
@@ -94,9 +96,9 @@ const ExpenseList = () => {
                     </div>
                 ))
             )}
-            <div ref={listEndRef} />
+            <div ref={listEndRef}/>
         </div>
     );
-};
+});
 
 export default ExpenseList;

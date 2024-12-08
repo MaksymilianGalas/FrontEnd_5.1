@@ -9,7 +9,7 @@ const router = express.Router();
 //const __dirname = path.dirname(__filename);
 
 
-const DATA_FILE = 'C:/Users/makse/OneDrive/Dokumenty/GitHub/FrontEnd_5.1/data/expenses.json';
+const DATA_FILE = 'C:/Users/makse/IdeaProjects/tracking-expenses/data/expenses.json';
 
 console.log(DATA_FILE);
 
